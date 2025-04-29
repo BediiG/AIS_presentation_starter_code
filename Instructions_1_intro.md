@@ -1,4 +1,4 @@
-# Step 1: Connecting Signup and Login Backend
+# Connecting Signup and Login Backend
 
 ## Goal
 - Add basic database functionality.
@@ -69,14 +69,29 @@ This endpoint accepts a username and password, checks if the user already exists
 
 ---
 
-# Step 1: Connecting Frontend Signup and Login to Backend
+## Task 5: Create /login Route
 
-## Goal
-- Implement real signup (`/register`) and login (`/login`) functionality.
-- Connect the Vue frontend to Flask backend via Axios.
-- Show success or error messages based on backend response.
+Below the `/register` route, add:
 
----
+```python
+# Route to login a user
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    # Find user by username
+    user = User.query.filter_by(username=username).first()
+
+    # Validate user exists and password matches
+    if not user or user.password != password:
+        return jsonify({"message": "Invalid username or password"}), 401
+
+    return jsonify({"message": "Login successful!"})
+```
+
+This checks the database if the username and password match.
 
 # Frontend Instructions
 
@@ -181,4 +196,5 @@ When `loading` is `true`, a loading message will appear automatically.
 
 ---
 
-This completes Step 1: Backend and Frontend Connection for Signup and Login!
+
+
