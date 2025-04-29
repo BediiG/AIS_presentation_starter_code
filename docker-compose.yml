@@ -1,0 +1,19 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    ports:
+      - "5000:5000"
+    command: tail -f /dev/null
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    command: tail -f /dev/null
