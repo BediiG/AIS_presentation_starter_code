@@ -1,12 +1,20 @@
 # AIS Presentation Starter Code
 
-This project sets up a simple frontend (Vue 3 + Vite) and backend (Flask) environment using Docker.
+This project was developed as a hands-on lecture for the **Advanced Information Security** course at UKIM. It demonstrates how to implement a secure authentication and session management system using OWASP guidelines. The application includes a Flask backend and Vue 3 frontend, packaged in Docker containers for easy deployment and testing.
 
-Both services are installed automatically inside containers, allowing you to start developing immediately without installing Node.js, Python, or libraries locally.
+The project progressively covers the following topics:
+- User registration and login using a relational database
+- Password hashing and account lockout after multiple failed attempts
+- Stateless session management using access and refresh tokens (JWT)
+- Migration from token-based localStorage sessions to HTTP-only secure cookies
+- Implementation of HTTPS using self-signed certificates for both backend and frontend
+- CORS configuration and secure API routing
+- Token refresh and protection of restricted routes
 
----
+Each stage aligns with secure development practices and illustrates real-world session handling techniques.
 
-## 🚀 How to Start the Project
+
+## How to Start the Project
 
 ### 1. Start Docker Containers
 
@@ -65,17 +73,15 @@ After you implement steps, you can test login and signup flows from the frontend
 
 ---
 
-## 📋 Useful Notes
+## Useful Notes
 
-- After editing frontend files, you might need to manually restart `npm run dev`.
 - After editing backend files, you might need to manually restart `python app.py`.
 - Environment variables are loaded from `.env` files.
-- No hot reloading is configured inside Docker containers — manual restarts are expected.
 - You should have a `.env` file locally based on the provided `.env.example`.
 
 ---
 
-## 🐳 Docker Setup
+## Docker Setup
 
 This project uses:
 - Node.js 20 (Alpine) inside the frontend container.
@@ -85,27 +91,3 @@ This project uses:
 
 ---
 
-## 📆 Project Structure
-
-```
-AIS_presentation_starter_code/
-├── docker-compose.yml
-├── backend/
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   ├── app.py
-├── frontend/
-│   ├── Dockerfile
-│   ├── package.json
-│   ├── vite.config.js (optional later)
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── LoginPage.vue
-│   │   │   ├── SuccessPage.vue
-├── .env.example
-├── README.md
-```
-
----
-
-Ready to develop, test, and build your AIS Presentation project!
